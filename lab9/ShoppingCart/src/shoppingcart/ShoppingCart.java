@@ -59,4 +59,12 @@ public class ShoppingCart {
 		}
 		return tp;
 	}
+    // get total price
+    public double getT2(){
+        double tp = 0.0;
+        for (CartLine c : list) {
+            tp=tp+(c.getP().getPrice() * c.getQ());
+        }
+        return tp;
+    }
 }
