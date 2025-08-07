@@ -1,10 +1,7 @@
 package org.miu.cs.cs425.studentmgmt.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,8 +15,8 @@ import lombok.Setter;
 @Table(name = "courses")
 public class Course {
     @Id
-    @GeneratedValue
-    private Integer courseId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long courseId;
     private String courseCode;
     private String courseName;
 }
