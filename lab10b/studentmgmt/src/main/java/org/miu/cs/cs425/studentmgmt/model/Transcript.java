@@ -1,21 +1,32 @@
 package org.miu.cs.cs425.studentmgmt.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Getter
 @Setter
-@ToString
+@Table(name = "transcripts")
 public class Transcript {
     @Id
-    @GeneratedValue
-    private Long id;
-    private String studentNumber;
-    private String courseName;
-    private Double grade;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long transcriptId;
+
+    private String degreeTitle;
+    public Transcript(Long transcriptId, String degreeTitle) {
+        this.transcriptId = transcriptId;
+        this.degreeTitle = degreeTitle;
+    }
+
+    @OneToOne(mappedBy = "transcript")
+    private Student student;
+
+    @Override
+    public String toString() {
+        return "Transcript{" +
+                "transcriptId=" + transcriptId +
+                ", degreeTitle='" + degreeTitle + '\'' +
+                '}';
+    }
 }

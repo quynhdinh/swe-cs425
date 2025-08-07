@@ -15,6 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "courses")
 public class Course {
     @Id
     @GeneratedValue
